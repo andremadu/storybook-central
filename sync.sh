@@ -5,7 +5,7 @@ SYNC_DIR="/tmp/storybook-sync"
 
 # Lista de repositórios dos colaboradores
 REPOS=(
-    "git@github.com:andremadu  /colaborador1-components.git"
+    "git@github.com:andremadu/colaborador1-components.git"
     "git@github.com:andremadu/colaborador2-components.git"
 )
 
