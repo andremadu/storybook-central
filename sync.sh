@@ -7,6 +7,7 @@ SYNC_DIR="/tmp/storybook-sync"
 REPOS=(
     "git@github.com:andremadu/colaborador1-components.git"
     "git@github.com:andremadu/colaborador2-components.git"
+    "git@github.com:andremadu/colaborador3.git"
 )
 
 # Apagar diretório antigo e recriá-lo
