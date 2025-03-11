@@ -18,8 +18,8 @@ jobs:
           mkdir -p ~/.ssh
           
           # Adicionar as duas chaves SSH
-          echo "${{ secrets.SSH_PRIVATE_KEY1 }}" > ~/.ssh/storybook1
-          echo "${{ secrets.SSH_PRIVATE_KEY2 }}" > ~/.ssh/storybook2
+          echo "${{ secrets.SSH_PRIVATE_KEY1 }}" | tr -d '\r' > ~/.ssh/storybook1
+          echo "${{ secrets.SSH_PRIVATE_KEY2 }}" | tr -d '\r' > ~/.ssh/storybook2
           
           chmod 600 ~/.ssh/storybook1 ~/.ssh/storybook2
           ssh-keyscan github.com >> ~/.ssh/known_hosts
@@ -27,8 +27,17 @@ jobs:
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/storybook1
           ssh-add ~/.ssh/storybook2
+          
+          export GIT_SSH_COMMAND='ssh -i ~/.ssh/storybook1 -o StrictHostKeyChecking=no'
+
+      - name: Configurar identidade do Git
+        run: |
+          git config --global user.email "andremm2412@gmail.com"
+          git config --global user.name "andremadu"
 
       - name: Executar sync.sh
         run: |
           chmod +x sync.sh
           ./sync.sh
+
+
