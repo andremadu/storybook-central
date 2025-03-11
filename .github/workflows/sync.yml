@@ -18,8 +18,8 @@ jobs:
           mkdir -p ~/.ssh
           
           # Adicionar as duas chaves SSH
-          echo "${{ secrets.SSH_KEY_STORYBOOK1 }}" > ~/.ssh/storybook1
-          echo "${{ secrets.SSH_KEY_STORYBOOK2 }}" > ~/.ssh/storybook2
+          echo "${{ secrets.SSH_PRIVATE_KEY1 }}" > ~/.ssh/storybook1
+          echo "${{ secrets.SSH_PRIVATE_KEY2 }}" > ~/.ssh/storybook2
           
           chmod 600 ~/.ssh/storybook1 ~/.ssh/storybook2
           ssh-keyscan github.com >> ~/.ssh/known_hosts
