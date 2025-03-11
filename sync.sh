@@ -13,9 +13,6 @@ REPOS=(
 rm -rf $SYNC_DIR
 mkdir -p $SYNC_DIR
 
-# Definir chave SSH antes de clonar
-export GIT_SSH_COMMAND="ssh -i ~/.ssh/storybook1 -o IdentitiesOnly=yes"
-
 # Loop por cada repositório e copiar ficheiros
 for REPO in "${REPOS[@]}"; do
     REPO_NAME=$(basename $REPO .git)
