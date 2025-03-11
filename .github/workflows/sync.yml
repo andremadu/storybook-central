@@ -1,0 +1,34 @@
+name: Sync Components
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Corre a cada hora
+  workflow_dispatch:  # Permite execução manual
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório central
+        uses: actions/checkout@v4
+
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          
+          # Adicionar as duas chaves SSH
+          echo "${{ secrets.SSH_KEY_STORYBOOK1 }}" > ~/.ssh/storybook1
+          echo "${{ secrets.SSH_KEY_STORYBOOK2 }}" > ~/.ssh/storybook2
+          
+          chmod 600 ~/.ssh/storybook1 ~/.ssh/storybook2
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/storybook1
+          ssh-add ~/.ssh/storybook2
+
+      - name: Executar sync.sh
+        run: |
+          chmod +x sync.sh
+          ./sync.sh
