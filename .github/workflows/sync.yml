@@ -33,7 +33,7 @@ jobs:
 
           # Configurar Git
           git config --global user.email "andremm2412@gmail.com"
-          git config --global user.name "GitHub Actions"
+          git config --global user.name "andremadu"
           git config --global core.sshCommand "ssh -F ~/.ssh/config"
 
       - name: Verificar acesso SSH
