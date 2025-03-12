@@ -8,6 +8,8 @@ REPOS=(
     "git@github.com:andremadu/colaborador1-components.git"
     "git@github.com:andremadu/colaborador2-components.git"
     "git@github.com:andremadu/ccolaborador3-components.git"
+    "git@github.com:andremadu/colaboradorx.git"
+    "git@github.com:andremadu/joao.git"
 )
 
 # Apagar diretório antigo e recriá-lo
